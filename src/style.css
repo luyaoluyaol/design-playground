@@ -1,13 +1,13 @@
 * { box-sizing: border-box; }
 
 :root {
-  --bg: #0a0a0c;
-  --surface: #111114;
-  --surface-2: #1a1a1f;
-  --border: #26262d;
-  --text: #f5f5f7;
-  --text-dim: #8e8e93;
-  --text-mute: #636368;
+  --bg: #ffffff;
+  --surface: #f5f5f7;
+  --surface-2: #ebebef;
+  --border: #dcdce1;
+  --text: #0a0a0c;
+  --text-dim: #6b6b72;
+  --text-mute: #9a9aa1;
   --accent: #ff3b5c;
   --gradient: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
 }
@@ -20,9 +20,9 @@ html, body {
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;
   background:
-    radial-gradient(circle at 20% 0%, #1a1530 0%, transparent 50%),
-    radial-gradient(circle at 80% 100%, #2a1020 0%, transparent 50%),
-    #050507;
+    radial-gradient(circle at 20% 0%, #fbe6ee 0%, transparent 50%),
+    radial-gradient(circle at 80% 100%, #fdeede 0%, transparent 50%),
+    #f7f7fa;
   color: var(--text);
   display: flex;
   justify-content: center;
@@ -40,9 +40,9 @@ body {
   border: 1px solid var(--border);
   overflow: hidden;
   box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.6),
-    0 0 0 8px #0a0a0c,
-    0 0 0 9px #2a2a30;
+    0 30px 80px rgba(20, 20, 40, 0.15),
+    0 0 0 8px #ffffff,
+    0 0 0 9px #d8d8de;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -73,7 +73,7 @@ body {
   align-items: center;
   padding: 10px 18px 12px;
   border-bottom: 1px solid var(--border);
-  background: rgba(10, 10, 12, 0.8);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   position: sticky;
@@ -269,7 +269,7 @@ body {
   align-items: center;
   padding: 10px 8px 22px;
   border-top: 1px solid var(--border);
-  background: rgba(10, 10, 12, 0.95);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
 }
 .tab {
