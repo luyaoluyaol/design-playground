@@ -1,0 +1,334 @@
+* { box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a0c;
+  --surface: #111114;
+  --surface-2: #1a1a1f;
+  --border: #26262d;
+  --text: #f5f5f7;
+  --text-dim: #8e8e93;
+  --text-mute: #636368;
+  --accent: #ff3b5c;
+  --gradient: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;
+  background:
+    radial-gradient(circle at 20% 0%, #1a1530 0%, transparent 50%),
+    radial-gradient(circle at 80% 100%, #2a1020 0%, transparent 50%),
+    #050507;
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 32px 16px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.phone {
+  width: 100%;
+  max-width: 420px;
+  background: var(--bg);
+  border-radius: 44px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 0 0 8px #0a0a0c,
+    0 0 0 9px #2a2a30;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 860px;
+}
+
+/* Status bar */
+.statusbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 28px 6px;
+  font-size: 15px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.status-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.status-right svg { display: block; }
+
+/* Menu bar */
+.menubar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 18px 12px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(10, 10, 12, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: 'Pacifico', 'SF Pro Display', cursive;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.icon-btn:hover { background: var(--surface-2); }
+.icon-btn.small { width: 28px; height: 28px; }
+.icon-btn svg { width: 22px; height: 22px; }
+.icon-btn.small svg { width: 18px; height: 18px; }
+
+/* Feed */
+.feed {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.feed::-webkit-scrollbar { width: 0; }
+
+.post {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+}
+.post:last-child { border-bottom: none; }
+
+.post-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+}
+.post-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.avatar-ring {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--gradient);
+  padding: 2px;
+  display: inline-flex;
+}
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+  object-fit: cover;
+}
+.post-meta {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.username {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+.location {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+/* Image */
+.post-image-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: var(--surface);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+.post-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Actions */
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px 4px;
+}
+.actions-left {
+  display: flex;
+  gap: 2px;
+}
+.action-btn {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.action-btn:hover { background: var(--surface-2); }
+.action-btn:active { transform: scale(0.9); }
+.action-btn svg {
+  width: 26px;
+  height: 26px;
+  transition: fill 0.15s, color 0.15s, transform 0.2s;
+}
+.like-btn.liked svg {
+  fill: var(--accent);
+  color: var(--accent);
+}
+
+/* Post body */
+.post-body {
+  padding: 2px 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.likes {
+  font-size: 14px;
+  font-weight: 600;
+}
+.caption {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--text);
+}
+.caption .username { margin-right: 6px; }
+.comments-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text-dim);
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+}
+.comments-link:hover { color: var(--text); }
+.time {
+  font-size: 11px;
+  color: var(--text-mute);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+/* Tab bar */
+.tabbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 8px 22px;
+  border-top: 1px solid var(--border);
+  background: rgba(10, 10, 12, 0.95);
+  backdrop-filter: blur(20px);
+}
+.tab {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.15s, transform 0.1s;
+}
+.tab:active { transform: scale(0.92); }
+.tab.active { color: var(--text); }
+.tab svg { width: 26px; height: 26px; }
+.tab-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid currentColor;
+}
+
+/* Double-tap heart burst */
+.heart-burst {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 110px;
+  height: 110px;
+  transform: translate(-50%, -50%) scale(0);
+  color: #fff;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.5));
+  animation: burst 0.7s ease-out forwards;
+}
+.heart-burst svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--accent);
+  stroke: var(--accent);
+}
+@keyframes burst {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  30% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+  60% { transform: translate(-50%, -50%) scale(0.95); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
+}
+
+@media (max-width: 460px) {
+  body { padding: 0; }
+  .phone {
+    max-width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+  }
+}
